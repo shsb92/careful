@@ -1,4 +1,4 @@
-# carful
+# careful
 
 ## Project setup
 ```
