@@ -78,9 +78,14 @@ export default {
         adress: "langen",
       },
       {
-        id: 1,
+        id: 2,
         name: "Saarbrücken",
         adress: "saarbrueken",
+      },
+      {
+        id: 3,
+        name: "Gießen",
+        adress: "giessen",
       },
     ]);
     const search = ref(null);
