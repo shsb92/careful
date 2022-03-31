@@ -12,21 +12,33 @@ const routes = [
     path: "/",
     name: "new_car",
     component: NewCarView,
+    meta: {
+      view_value: 0,
+    },
   },
   {
     path: "/customers",
     name: "customers",
     component: CustomerIndex,
+    meta: {
+      view_value: 1,
+    },
   },
   {
     path: "/employees",
     name: "employees",
     component: EmployeeIndex,
+    meta: {
+      view_value: 2,
+    },
   },
   {
     path: "/invoices",
     name: "invoices",
     component: InvoiceIndex,
+    meta: {
+      view_value: 3,
+    },
   },
 ];
 

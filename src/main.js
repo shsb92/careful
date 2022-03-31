@@ -79,5 +79,8 @@ new Vue({
     drawer: false,
     current_view: 0,
   },
+  mounted() {
+    this.current_view = this._route.meta.view_value;
+  },
   render: (h) => h(App),
 }).$mount("#app");

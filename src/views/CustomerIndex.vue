@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1></h1>
     <v-text-field
       v-model="search"
       append-icon="mdi-magnify"
@@ -7,7 +8,12 @@
       single-line
       hide-details
     ></v-text-field>
-    <v-data-table :headers="headers" :items="customers" :search="search">
+    <v-data-table
+      :headers="headers"
+      :items="customers"
+      :search="search"
+      mobile-breakpoint="0"
+    >
       <template v-slot:item="{ item }">
         <tr>
           <td>
