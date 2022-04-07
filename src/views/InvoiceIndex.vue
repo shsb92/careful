@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1></h1>
+    <h1>Rechnungen</h1>
     <v-text-field
       v-model="search"
       append-icon="mdi-magnify"

@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import CustomerIndex from "../views/CustomerIndex.vue";
 import EmployeeIndex from "../views/EmployeeIndex.vue";
 import InvoiceIndex from "../views/InvoiceIndex.vue";
+import Login from "../views/AppLogin.vue";
 import NewCarView from "../views/NewCarView.vue";
+import Profile from "../views/ProfileView.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,16 @@ const routes = [
     meta: {
       view_value: 0,
     },
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
   },
   {
     path: "/customers",

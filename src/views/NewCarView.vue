@@ -1,7 +1,7 @@
 <template>
   <div class="h-100">
     <h1>Fahrzeugaufnahme</h1>
-    <v-row class="mx-1 mt-3">
+    <v-row class="mt-3">
       <v-col>
         <label for="customer">Kunde</label>
         <v-autocomplete
@@ -17,8 +17,8 @@
       </v-col>
     </v-row>
     <v-divider></v-divider>
-    <v-card-title> Fahrzeugdaten </v-card-title>
-    <v-row class="mx-1">
+    <h3 class="mt-3">Fahrzeugdaten</h3>
+    <v-row class="mt-1">
       <v-col cols="12" sm="6">
         <v-text-field label="Fahrzeugbezeichnung" solo></v-text-field>
       </v-col>
@@ -44,7 +44,7 @@
           <v-date-picker
             v-model="date"
             header-color="black white--text"
-            color="success"
+            color="accent"
             scrollable
             locale="de-de"
           >
@@ -52,19 +52,19 @@
             <v-btn text color="blue-grey darken-1" @click="date_modal = false">
               Cancel
             </v-btn>
-            <v-btn text color="success" @click="$refs.dialog.save(date)">
+            <v-btn text color="accent" @click="$refs.dialog.save(date)">
               OK
             </v-btn>
           </v-date-picker>
         </v-dialog>
       </v-col>
     </v-row>
-    <v-row class="mx-1">
+    <v-row>
       <v-col cols="12" sm="6">
         <v-text-field label="Fahrgestellnummer (letzte 6)" solo></v-text-field>
       </v-col>
     </v-row>
-    <v-btn class="mt-5" color="success" text block>Eintragen</v-btn>
+    <v-btn class="mt-5" block color="accent">Eintragen</v-btn>
   </div>
 </template>
 <script>

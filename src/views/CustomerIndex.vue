@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1></h1>
+    <h1>Kunden</h1>
     <v-text-field
       v-model="search"
       append-icon="mdi-magnify"
@@ -25,7 +25,7 @@
           <td>
             <v-btn
               @click.stop="deleteCustomer(item.id)"
-              color="error"
+              color="accent"
               class="float-right"
               icon
             >
