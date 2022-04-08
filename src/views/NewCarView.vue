@@ -3,7 +3,7 @@
     <h1>Fahrzeugaufnahme</h1>
     <v-row class="mt-3">
       <v-col>
-        <label for="customer">Kunde</label>
+        <label for="customer">Einlieferer</label>
         <v-autocomplete
           id="customer"
           filled

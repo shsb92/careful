@@ -55,16 +55,21 @@ export default {
         icon: "mdi-file-document-edit",
         name: "Rechnungen",
       },
+      {
+        id: 5,
+        icon: "mdi-file-document-edit",
+        name: "Companies",
+      },
     ]);
     const nav_bottom_items = ref([
       {
-        id: 5,
+        id: 6,
         icon: "mdi-account",
         name: "Profile",
         color: "primary",
       },
       {
-        id: 6,
+        id: 7,
         icon: "mdi-logout",
         name: "Logout",
         color: "accent",

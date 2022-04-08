@@ -67,6 +67,7 @@ Vue.mixin({
       if (item === 1) return this.$router.push({ name: "customers" });
       if (item === 2) return this.$router.push({ name: "employees" });
       if (item === 3) return this.$router.push({ name: "invoices" });
+      if (item === 4) return this.$router.push({ name: "companies" });
     },
   },
 });

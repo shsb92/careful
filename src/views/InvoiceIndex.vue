@@ -8,45 +8,21 @@
       single-line
       hide-details
     ></v-text-field>
-    <v-data-table
-      :headers="headers"
-      :items="invoices"
-      :search="search"
-      mobile-breakpoint="0"
-    >
+    <v-data-table :headers="headers" :items="invoices" :search="search">
       <template v-slot:item="{ item }">
         <tr>
           <td>
-            {{ item.customer }}
+            {{ item.invoice_nr }}
           </td>
           <td>
             {{ item.period }}
           </td>
           <td>
-            <v-btn
-              @click.stop="deleteinvoice(item.id)"
-              color="error"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-            <v-btn
-              @click.stop="viewinvoice(item.id)"
-              color="success"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-eye</v-icon>
-            </v-btn>
-            <v-btn
-              @click.stop="editinvoice(item.id)"
-              color="warning"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-pen</v-icon>
-            </v-btn>
+            {{ item.customer }}
+          </td>
+          <td>
+            <v-icon v-if="item.payed"> mdi-check </v-icon>
+            <v-icon v-else> mdi-cancel </v-icon>
           </td>
         </tr>
       </template></v-data-table
@@ -58,6 +34,12 @@ import { ref } from "@vue/composition-api";
 export default {
   setup() {
     const headers = ref([
+      {
+        text: "Rechnungsnummer",
+        align: "start",
+        filterable: true,
+        value: "invoice_nr",
+      },
       {
         text: "Zeitraum",
         align: "start",
@@ -71,10 +53,10 @@ export default {
         value: "customer",
       },
       {
-        text: "Aktionen",
-        align: "end",
-        filterable: false,
-        value: "actions",
+        text: "Zahlungsstatus",
+        align: "start",
+        filterable: true,
+        value: "payed",
       },
     ]);
     const invoices = ref([
@@ -82,16 +64,22 @@ export default {
         id: 1,
         customer: "Langen",
         period: "21.02.2022 - 20.03.2022",
+        invoice_nr: "1234",
+        payed: true,
       },
       {
         id: 2,
         customer: "Saarbrücken",
         period: "21.02.2022 - 20.03.2022",
+        invoice_nr: "2345",
+        payed: true,
       },
       {
         id: 3,
         customer: "Gießen",
         period: "21.02.2022 - 20.03.2022",
+        invoice_nr: "3456",
+        payed: false,
       },
     ]);
     const search = ref(null);

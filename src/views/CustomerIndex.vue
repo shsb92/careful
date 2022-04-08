@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1>Kunden</h1>
+    <v-col>
+      <v-row>
+        <h1>Auktionszentren</h1>
+        <v-spacer></v-spacer>
+        <v-btn color="success" icon><v-icon>mdi-plus</v-icon></v-btn>
+      </v-row>
+    </v-col>
+
     <v-text-field
       v-model="search"
       append-icon="mdi-magnify"
@@ -19,35 +26,6 @@
           <td>
             {{ item.name }}
           </td>
-          <td>
-            {{ item.adress }}
-          </td>
-          <td>
-            <v-btn
-              @click.stop="deleteCustomer(item.id)"
-              color="accent"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-            <v-btn
-              @click.stop="viewCustomer(item.id)"
-              color="success"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-eye</v-icon>
-            </v-btn>
-            <v-btn
-              @click.stop="editCustomer(item.id)"
-              color="warning"
-              class="float-right"
-              icon
-            >
-              <v-icon>mdi-pen</v-icon>
-            </v-btn>
-          </td>
         </tr>
       </template></v-data-table
     >
@@ -63,18 +41,6 @@ export default {
         align: "start",
         filterable: true,
         value: "name",
-      },
-      {
-        text: "Adresse",
-        align: "start",
-        filterable: true,
-        value: "adress",
-      },
-      {
-        text: "Aktionen",
-        align: "end",
-        filterable: false,
-        value: "actions",
       },
     ]);
     const customers = ref([
