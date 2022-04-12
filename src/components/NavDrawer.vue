@@ -58,7 +58,7 @@ export default {
       {
         id: 5,
         icon: "mdi-file-document-edit",
-        name: "Companies",
+        name: "Unternehmen",
       },
     ]);
     const nav_bottom_items = ref([

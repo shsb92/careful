@@ -10,7 +10,7 @@
     ></v-text-field>
     <v-data-table :headers="headers" :items="invoices" :search="search">
       <template v-slot:item="{ item }">
-        <tr>
+        <tr @click="viewinvoice(item.id)">
           <td>
             {{ item.invoice_nr }}
           </td>
@@ -90,18 +90,6 @@ export default {
     const viewinvoice = (invoice_id) => {
       alert(`view${invoice_id}`);
     };
-    /**
-     *
-     */
-    const editinvoice = (invoice_id) => {
-      alert(`edit${invoice_id}`);
-    };
-    /**
-     *
-     */
-    const deleteinvoice = (invoice_id) => {
-      alert(`delete${invoice_id}`);
-    };
 
     return {
       // return data
@@ -110,8 +98,6 @@ export default {
       search,
       // return methods
       viewinvoice,
-      editinvoice,
-      deleteinvoice,
     };
   },
 };

@@ -4,7 +4,7 @@
       <v-row>
         <h1>Mitarbeiter</h1>
         <v-spacer></v-spacer>
-        <v-btn color="success" icon><v-icon>mdi-plus</v-icon></v-btn>
+        <dialog-employee-add></dialog-employee-add>
       </v-row>
     </v-col>
 
@@ -22,7 +22,7 @@
       mobile-breakpoint="0"
     >
       <template v-slot:item="{ item }">
-        <tr>
+        <tr @click="viewemployee(item.id)">
           <td>
             {{ item.name }}
           </td>
@@ -65,18 +65,6 @@ export default {
     const viewemployee = (employee_id) => {
       alert(`view${employee_id}`);
     };
-    /**
-     *
-     */
-    const editemployee = (employee_id) => {
-      alert(`edit${employee_id}`);
-    };
-    /**
-     *
-     */
-    const deleteemployee = (employee_id) => {
-      alert(`delete${employee_id}`);
-    };
 
     return {
       // return data
@@ -85,8 +73,6 @@ export default {
       search,
       // return methods
       viewemployee,
-      editemployee,
-      deleteemployee,
     };
   },
 };

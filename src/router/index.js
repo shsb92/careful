@@ -1,11 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import CompanyAdd from "@/views/CompanyAdd.vue";
 import CompanyIndex from "@/views/CompanyIndex.vue";
-import CustomerAdd from "@/views/CustomerAdd.vue";
 import CustomerIndex from "@/views/CustomerIndex.vue";
 import CustomerView from "@/views/CustomerView.vue";
-import EmployeeAdd from "@/views/CustomerAdd.vue";
 import EmployeeIndex from "@/views/EmployeeIndex.vue";
 import EmployeeView from "@/views/EmployeeView.vue";
 import InvoiceIndex from "@/views/InvoiceIndex.vue";
@@ -44,14 +41,6 @@ const routes = [
     },
   },
   {
-    path: "/customers/add",
-    name: "customers_add",
-    component: CustomerAdd,
-    meta: {
-      view_value: 1,
-    },
-  },
-  {
     path: "/customers/:id",
     name: "customers_view",
     component: CustomerView,
@@ -63,14 +52,6 @@ const routes = [
     path: "/employees",
     name: "employees",
     component: EmployeeIndex,
-    meta: {
-      view_value: 2,
-    },
-  },
-  {
-    path: "/employees/add",
-    name: "employees_add",
-    component: EmployeeAdd,
     meta: {
       view_value: 2,
     },
@@ -103,14 +84,6 @@ const routes = [
     path: "/companies",
     name: "companies",
     component: CompanyIndex,
-    meta: {
-      view_value: 4,
-    },
-  },
-  {
-    path: "/companies/add",
-    name: "companies_add",
-    component: CompanyAdd,
     meta: {
       view_value: 4,
     },

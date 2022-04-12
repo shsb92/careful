@@ -4,7 +4,7 @@
       <v-row>
         <h1>Auktionszentren</h1>
         <v-spacer></v-spacer>
-        <v-btn color="success" icon><v-icon>mdi-plus</v-icon></v-btn>
+        <dialog-customer-add></dialog-customer-add>
       </v-row>
     </v-col>
 
@@ -22,7 +22,7 @@
       mobile-breakpoint="0"
     >
       <template v-slot:item="{ item }">
-        <tr>
+        <tr @click="viewCustomer(item.id)">
           <td>
             {{ item.name }}
           </td>
@@ -68,18 +68,6 @@ export default {
     const viewCustomer = (customer_id) => {
       alert(`view${customer_id}`);
     };
-    /**
-     *
-     */
-    const editCustomer = (customer_id) => {
-      alert(`edit${customer_id}`);
-    };
-    /**
-     *
-     */
-    const deleteCustomer = (customer_id) => {
-      alert(`delete${customer_id}`);
-    };
 
     return {
       // return data
@@ -88,8 +76,6 @@ export default {
       search,
       // return methods
       viewCustomer,
-      editCustomer,
-      deleteCustomer,
     };
   },
 };

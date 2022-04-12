@@ -1,28 +1,18 @@
 <template>
   <div class="h-100">
     <h1>Fahrzeugaufnahme</h1>
-    <v-row class="mt-3">
-      <v-col>
-        <label for="customer">Einlieferer</label>
+    <v-row class="my-6">
+      <v-col cols="12" sm="6" class="py-0">
         <v-autocomplete
-          id="customer"
-          filled
           solo
           v-model="selected_customer"
           :items="customer"
           item-text="name"
-          placeholder="Zum suchen schreiben"
+          label="Einlieferer"
           return-object
         ></v-autocomplete>
       </v-col>
-    </v-row>
-    <v-divider></v-divider>
-    <h3 class="mt-3">Fahrzeugdaten</h3>
-    <v-row class="mt-1">
-      <v-col cols="12" sm="6">
-        <v-text-field label="Fahrzeugbezeichnung" solo></v-text-field>
-      </v-col>
-      <v-col cols="12" sm="6">
+      <v-col cols="12" sm="6" class="py-0">
         <v-dialog
           ref="dialog"
           v-model="date_modal"
@@ -33,7 +23,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
               v-model="date"
-              label="Aufnahme Datum"
+              label="Aufnahmedatum"
               append-icon="mdi-calendar"
               readonly
               solo
@@ -59,8 +49,13 @@
         </v-dialog>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" sm="6">
+    <v-divider></v-divider>
+    <h3 class="mt-3">Fahrzeugdaten</h3>
+    <v-row class="my-6">
+      <v-col cols="12" sm="6" class="py-0">
+        <v-text-field label="Fahrzeugbezeichnung" solo></v-text-field>
+      </v-col>
+      <v-col cols="12" sm="6" class="py-0">
         <v-text-field label="Fahrgestellnummer (letzte 6)" solo></v-text-field>
       </v-col>
     </v-row>
