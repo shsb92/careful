@@ -34,7 +34,7 @@
 <script>
 import { ref } from "@vue/composition-api";
 export default {
-  setup() {
+  setup(props, vm) {
     const headers = ref([
       {
         text: "Name",
@@ -63,7 +63,7 @@ export default {
      *
      */
     const viewemployee = (employee_id) => {
-      alert(`view${employee_id}`);
+      vm.root.$router.push({ name: "employees_view", id: employee_id });
     };
 
     return {

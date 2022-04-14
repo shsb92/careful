@@ -17,7 +17,7 @@
     </v-list>
     <template v-slot:append>
       <v-list-item
-        @click="bottomNavigation(item.id)"
+        @click="logout()"
         v-for="item in nav_bottom_items"
         :key="item.id"
         :class="`${item.color}--text`"
@@ -60,14 +60,13 @@ export default {
         icon: "mdi-file-document-edit",
         name: "Unternehmen",
       },
-    ]);
-    const nav_bottom_items = ref([
       {
         id: 6,
         icon: "mdi-account",
         name: "Profile",
-        color: "primary",
       },
+    ]);
+    const nav_bottom_items = ref([
       {
         id: 7,
         icon: "mdi-logout",
@@ -79,8 +78,7 @@ export default {
     /**
      *
      */
-    const bottomNavigation = (id) => {
-      if (id === 5) return vm.root.$router.push({ name: "profile" });
+    const logout = () => {
       // Add actual logout function and then redirect
       return vm.root.$router.push({ name: "login" });
     };
@@ -90,7 +88,7 @@ export default {
       nav_items,
       nav_bottom_items,
       // return method
-      bottomNavigation,
+      logout,
     };
   },
 };

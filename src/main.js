@@ -63,11 +63,72 @@ Vue.mixin({
      *
      */
     drawerNavigation: function (item) {
-      if (item === 0) return this.$router.push({ name: "new_car" });
-      if (item === 1) return this.$router.push({ name: "customers" });
-      if (item === 2) return this.$router.push({ name: "employees" });
-      if (item === 3) return this.$router.push({ name: "invoices" });
-      if (item === 4) return this.$router.push({ name: "companies" });
+      if (item === 0)
+        return this.$router.push({ name: "new_car" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 1)
+        return this.$router.push({ name: "customers" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 2)
+        return this.$router.push({ name: "employees" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 3)
+        return this.$router.push({ name: "invoices" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 4)
+        return this.$router.push({ name: "companies" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 5)
+        return this.$router.push({ name: "profile" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
     },
   },
 });

@@ -32,7 +32,7 @@
 <script>
 import { ref } from "@vue/composition-api";
 export default {
-  setup() {
+  setup(props, vm) {
     const headers = ref([
       {
         text: "Rechnungsnummer",
@@ -88,7 +88,7 @@ export default {
      *
      */
     const viewinvoice = (invoice_id) => {
-      alert(`view${invoice_id}`);
+      vm.root.$router.push({ name: "invoices_view", id: invoice_id });
     };
 
     return {
