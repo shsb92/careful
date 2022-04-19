@@ -43,12 +43,12 @@ export default {
       {
         id: 2,
         icon: "mdi-handshake",
-        name: "Kunden",
+        name: "Auktionszentren",
       },
       {
-        id: 3,
-        icon: "mdi-account-group",
-        name: "Mitarbeiter",
+        id: 5,
+        icon: "mdi-office-building",
+        name: "Unternehmen",
       },
       {
         id: 4,
@@ -56,9 +56,9 @@ export default {
         name: "Rechnungen",
       },
       {
-        id: 5,
-        icon: "mdi-file-document-edit",
-        name: "Unternehmen",
+        id: 3,
+        icon: "mdi-account-group",
+        name: "Mitarbeiter",
       },
       {
         id: 6,

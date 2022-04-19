@@ -15,12 +15,14 @@
         <v-btn icon dark @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>Neues Unternehmen hinzufügen</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn dark text @click="uploadCompany()"> Speichern </v-btn>
-        </v-toolbar-items>
+        <v-toolbar-title>Unternehmen hinzufügen</v-toolbar-title>
       </v-toolbar>
+      <v-card-text class="mt-10">
+        <v-text-field v-model="company.name" label="Name" solo></v-text-field>
+        <v-btn class="mt-5" block color="accent" @click="uploadCompany()"
+          >Speichern</v-btn
+        >
+      </v-card-text>
     </v-card>
   </v-dialog>
 </template>
@@ -29,17 +31,21 @@ import { ref } from "@vue/composition-api";
 export default {
   setup() {
     const dialog = ref(false);
+    const company = ref({
+      name: "",
+    });
 
     /**
      *
      */
     const uploadCompany = () => {
-      alert("upload");
+      console.log(company);
     };
 
     return {
       // return data
       dialog,
+      company,
       // return methods
       uploadCompany,
     };

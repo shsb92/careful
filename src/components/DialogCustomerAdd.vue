@@ -15,12 +15,38 @@
         <v-btn icon dark @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>Neues Auktionszentrum hinzufügen</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn dark text @click="uploadCustomer()"> Speichern </v-btn>
-        </v-toolbar-items>
+        <v-toolbar-title>Auktionszentrum hinzufügen</v-toolbar-title>
       </v-toolbar>
+      <v-card-text class="mt-10">
+        <v-text-field v-model="customer.name" label="Name" solo></v-text-field>
+        <v-text-field
+          v-model="customer.street"
+          label="Straße"
+          solo
+        ></v-text-field>
+        <v-text-field
+          v-model="customer.house_nr"
+          label="Hausnummer"
+          solo
+        ></v-text-field>
+        <v-text-field v-model="customer.city" label="Ort" solo></v-text-field>
+        <v-text-field
+          v-model="customer.postal_code"
+          label="PLZ"
+          solo
+        ></v-text-field>
+        <v-autocomplete
+          v-model="customer.company"
+          :items="companies"
+          item-text="name"
+          label="Unternehmen"
+          return-object
+          solo
+        ></v-autocomplete>
+        <v-btn class="mt-5" block color="accent" @click="uploadCustomer()"
+          >Speichern</v-btn
+        >
+      </v-card-text>
     </v-card>
   </v-dialog>
 </template>
@@ -29,17 +55,28 @@ import { ref } from "@vue/composition-api";
 export default {
   setup() {
     const dialog = ref(false);
+    const companies = ref([{ id: 1, name: "Auktion und Markt" }]);
+    const customer = ref({
+      name: "",
+      street: "",
+      house_nr: "",
+      city: "",
+      postal_code: "",
+      company: "",
+    });
 
     /**
      *
      */
     const uploadCustomer = () => {
-      alert("upload");
+      console.log(customer.value);
     };
 
     return {
       // return data
       dialog,
+      companies,
+      customer,
       // return methods
       uploadCustomer,
     };
