@@ -108,17 +108,6 @@ Vue.mixin({
           }
         });
       if (item === 4)
-        return this.$router.push({ name: "companies" }).catch((error) => {
-          if (
-            error.name !== "NavigationDuplicated" &&
-            !error.message.includes(
-              "Avoided redundant navigation to current location"
-            )
-          ) {
-            console.log(error);
-          }
-        });
-      if (item === 5)
         return this.$router.push({ name: "profile" }).catch((error) => {
           if (
             error.name !== "NavigationDuplicated" &&

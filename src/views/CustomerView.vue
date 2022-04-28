@@ -3,22 +3,17 @@
     <h1>{{ customer.name }}</h1>
     <v-col class="p-0">
       <h3>Adresse</h3>
+      <v-divider></v-divider>
       <v-row>
-        <v-col>
-          <strong>Straße, Haus Nr.</strong> <br />
-          <strong>Stadt, PLZ</strong> <br />
-          <strong>Unternehmen</strong> <br />
-        </v-col>
         <v-col>
           {{ customer.street }}, {{ customer.house_nr }} <br />
           {{ customer.city }}, {{ customer.postal_code }} <br />
-          {{ customer.company.name }} <br />
         </v-col>
       </v-row>
       <v-divider class="mt-5"></v-divider>
       <v-col>
         <v-row>
-          <h1>Auktionszentren</h1>
+          <h3 class="mt-3">Einlieferer</h3>
           <v-spacer></v-spacer>
           <v-btn
             @click="expand = !expand"
@@ -56,6 +51,7 @@
         ></v-text-field>
       </v-expand-transition>
       <v-text-field
+        class="pt-0"
         v-model="search"
         append-icon="mdi-magnify"
         label="Search"
@@ -85,7 +81,6 @@ export default {
       house_nr: "14",
       city: "Hanau",
       postal_code: "34552",
-      company: { id: 1, name: "Auktion und Markt" },
       submitters: [
         { id: 1, name: "Beispieleinlieferer" },
         { id: 2, name: "Beispieleinlieferer Zwei" },

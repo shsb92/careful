@@ -88,7 +88,10 @@ export default {
      *
      */
     const viewinvoice = (invoice_id) => {
-      vm.root.$router.push({ name: "invoices_view", id: invoice_id });
+      vm.root.$router.push({
+        name: "invoices_view",
+        params: { id: invoice_id },
+      });
     };
 
     return {

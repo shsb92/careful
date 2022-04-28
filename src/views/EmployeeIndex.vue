@@ -63,7 +63,10 @@ export default {
      *
      */
     const viewemployee = (employee_id) => {
-      vm.root.$router.push({ name: "employees_view", id: employee_id });
+      vm.root.$router.push({
+        name: "employees_view",
+        params: { id: employee_id },
+      });
     };
 
     return {

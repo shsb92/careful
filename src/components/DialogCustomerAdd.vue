@@ -17,7 +17,7 @@
         </v-btn>
         <v-toolbar-title>Auktionszentrum hinzufügen</v-toolbar-title>
       </v-toolbar>
-      <v-card-text class="mt-10">
+      <v-container class="mt-10">
         <v-text-field v-model="customer.name" label="Name" solo></v-text-field>
         <v-text-field
           v-model="customer.street"
@@ -35,18 +35,10 @@
           label="PLZ"
           solo
         ></v-text-field>
-        <v-autocomplete
-          v-model="customer.company"
-          :items="companies"
-          item-text="name"
-          label="Unternehmen"
-          return-object
-          solo
-        ></v-autocomplete>
         <v-btn class="mt-5" block color="accent" @click="uploadCustomer()"
           >Speichern</v-btn
         >
-      </v-card-text>
+      </v-container>
     </v-card>
   </v-dialog>
 </template>
@@ -55,14 +47,12 @@ import { ref } from "@vue/composition-api";
 export default {
   setup() {
     const dialog = ref(false);
-    const companies = ref([{ id: 1, name: "Auktion und Markt" }]);
     const customer = ref({
       name: "",
       street: "",
       house_nr: "",
       city: "",
       postal_code: "",
-      company: "",
     });
 
     /**
@@ -75,7 +65,6 @@ export default {
     return {
       // return data
       dialog,
-      companies,
       customer,
       // return methods
       uploadCustomer,

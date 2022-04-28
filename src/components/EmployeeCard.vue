@@ -40,22 +40,37 @@
       </v-list-item-content>
     </v-list-item>
     <v-col v-if="profile">
-      <v-row>
-        <v-col><strong>Rolle:</strong></v-col>
-        <v-col>
-          {{ employee.role }}
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col> <strong>Personalnummer:</strong> </v-col>
-        <v-col>
-          {{ employee.pers_nr }}
-        </v-col>
-      </v-row>
-      <v-btn block class="my-3" color="accent"> Urlaub Eintragen </v-btn>
-      <v-btn block class="my-3" color="accent"> Krankmeldung </v-btn>
+      <strong class="mr-5">Rolle:</strong>
+      {{ employee.role }}
+      <dialog-submit-vacation></dialog-submit-vacation>
+      <dialog-submit-sick-note></dialog-submit-sick-note>
     </v-col>
-    <v-col v-else> Not Profile </v-col>
+    <v-col v-else>
+      <strong class="ml-2 mr-5">Rolle:</strong>
+      {{ employee.role }}
+      <br />
+      <v-list class="mt-2">
+        <v-header class="pl-2">Urlaub:</v-header>
+        <v-list-item-group color="primary">
+          <v-list-item v-for="(vacaction, i) in vacations" :key="i">
+            <v-list-item-content>
+              <v-row>
+                <v-col>
+                  <v-list-item-title
+                    v-text="vacaction.start_date"
+                  ></v-list-item-title>
+                </v-col>
+                <v-col>
+                  <v-list-item-title
+                    v-text="vacaction.end_date"
+                  ></v-list-item-title>
+                </v-col>
+              </v-row>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-col>
   </v-card>
 </template>
 <script>
@@ -67,6 +82,12 @@ export default {
   },
   setup() {
     const transparent = ref("rgba(255, 255, 255, 0)");
+    const vacations = ref([
+      {
+        start_date: "12-05-2022",
+        end_date: "14-05-2022",
+      },
+    ]);
 
     const changeProfileImage = () => {
       alert("change");
@@ -75,6 +96,7 @@ export default {
     return {
       // return data
       transparent,
+      vacations,
       // return function
       changeProfileImage,
     };

@@ -17,7 +17,7 @@
         </v-btn>
         <v-toolbar-title>Mitarbeitenden hinzufügen</v-toolbar-title>
       </v-toolbar>
-      <v-card-text class="mt-10">
+      <v-container class="mt-10">
         <v-text-field v-model="employee.name" label="Name" solo></v-text-field>
         <v-text-field
           v-model="employee.street"
@@ -37,6 +37,11 @@
           label="Email"
           solo
         ></v-text-field>
+        <v-text-field
+          v-model="employee.job"
+          label="Jobbeschreibung"
+          solo
+        ></v-text-field>
         <v-autocomplete
           v-model="employee.role"
           :items="roles"
@@ -45,10 +50,10 @@
           return-object
           solo
         ></v-autocomplete>
-        <v-btn class="mt-5" block color="accent" @click="uploadCustomer()"
+        <v-btn class="mt-5" block color="accent" @click="uploadEmployee()"
           >Speichern</v-btn
         >
-      </v-card-text>
+      </v-container>
     </v-card>
   </v-dialog>
 </template>
@@ -65,6 +70,7 @@ export default {
       city: "",
       postal_code: "",
       email: "",
+      job: "",
       role: "",
     });
 

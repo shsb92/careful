@@ -1,7 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import CompanyIndex from "@/views/CompanyIndex.vue";
-import CompanyView from "@/views/CompanyView.vue";
 import CustomerIndex from "@/views/CustomerIndex.vue";
 import CustomerView from "@/views/CustomerView.vue";
 import EmployeeIndex from "@/views/EmployeeIndex.vue";
@@ -85,22 +83,6 @@ const routes = [
     component: InvoiceView,
     meta: {
       view_value: 3,
-    },
-  },
-  {
-    path: "/companies",
-    name: "companies",
-    component: CompanyIndex,
-    meta: {
-      view_value: 4,
-    },
-  },
-  {
-    path: "/companies/:id",
-    name: "companies_view",
-    component: CompanyView,
-    meta: {
-      view_value: 4,
     },
   },
 ];

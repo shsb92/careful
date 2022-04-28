@@ -46,11 +46,6 @@ export default {
         name: "Auktionszentren",
       },
       {
-        id: 5,
-        icon: "mdi-office-building",
-        name: "Unternehmen",
-      },
-      {
         id: 4,
         icon: "mdi-file-document-edit",
         name: "Rechnungen",
@@ -61,7 +56,7 @@ export default {
         name: "Mitarbeiter",
       },
       {
-        id: 6,
+        id: 5,
         icon: "mdi-account",
         name: "Profile",
       },

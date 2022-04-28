@@ -66,7 +66,10 @@ export default {
      *
      */
     const viewCustomer = (customer_id) => {
-      vm.root.$router.push({ name: "customers_view", id: customer_id });
+      vm.root.$router.push({
+        name: "customers_view",
+        params: { id: customer_id },
+      });
     };
 
     return {
