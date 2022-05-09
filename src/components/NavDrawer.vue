@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="$root.drawer" absolute left temporary>
+  <v-navigation-drawer class="h-fit" v-model="$root.drawer" absolute left>
     <v-list nav>
       <v-list-item-group v-model="$root.current_view">
         <v-list-item
@@ -88,3 +88,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.h-fit {
+  max-height: calc(100%-80px) !important;
+}
+</style>

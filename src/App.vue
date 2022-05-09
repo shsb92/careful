@@ -36,4 +36,16 @@ export default {
     #e52e0d
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+@media print {
+  * {
+    visibility: hidden;
+  }
+  .hidden-section {
+    visibility: hidden !important;
+  }
+  .section-to-print,
+  .section-to-print * {
+    visibility: visible;
+  }
+}
 </style>

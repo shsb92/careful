@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app class="w-100 black" height="80" elevate-on-scroll>
+  <v-app-bar id="app_bar" app class="w-100 black" height="80" elevate-on-scroll>
     <v-btn
       v-if="!is_login"
       color="white"
