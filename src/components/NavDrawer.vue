@@ -46,19 +46,24 @@ export default {
         name: "Auktionszentren",
       },
       {
-        id: 4,
+        id: 3,
         icon: "mdi-file-document-edit",
         name: "Rechnungen",
       },
       {
-        id: 3,
+        id: 4,
         icon: "mdi-account-group",
         name: "Mitarbeiter",
       },
       {
         id: 5,
         icon: "mdi-account",
-        name: "Profile",
+        name: "Profil",
+      },
+      {
+        id: 6,
+        icon: "mdi-death-star-variant",
+        name: "Stammdaten",
       },
     ]);
     const nav_bottom_items = ref([

@@ -86,17 +86,6 @@ Vue.mixin({
           }
         });
       if (item === 2)
-        return this.$router.push({ name: "employees" }).catch((error) => {
-          if (
-            error.name !== "NavigationDuplicated" &&
-            !error.message.includes(
-              "Avoided redundant navigation to current location"
-            )
-          ) {
-            console.log(error);
-          }
-        });
-      if (item === 3)
         return this.$router.push({ name: "invoices" }).catch((error) => {
           if (
             error.name !== "NavigationDuplicated" &&
@@ -107,8 +96,31 @@ Vue.mixin({
             console.log(error);
           }
         });
+      if (item === 3)
+        return this.$router.push({ name: "employees" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+
       if (item === 4)
         return this.$router.push({ name: "profile" }).catch((error) => {
+          if (
+            error.name !== "NavigationDuplicated" &&
+            !error.message.includes(
+              "Avoided redundant navigation to current location"
+            )
+          ) {
+            console.log(error);
+          }
+        });
+      if (item === 5)
+        return this.$router.push({ name: "master_data" }).catch((error) => {
           if (
             error.name !== "NavigationDuplicated" &&
             !error.message.includes(

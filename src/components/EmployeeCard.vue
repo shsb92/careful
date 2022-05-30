@@ -49,27 +49,25 @@
       <strong class="ml-2 mr-5">Rolle:</strong>
       {{ employee.role }}
       <br />
-      <v-list class="mt-2">
-        <v-header class="pl-2">Urlaub:</v-header>
-        <v-list-item-group color="primary">
-          <v-list-item v-for="(vacaction, i) in vacations" :key="i">
-            <v-list-item-content>
-              <v-row>
-                <v-col>
-                  <v-list-item-title
-                    v-text="vacaction.start_date"
-                  ></v-list-item-title>
-                </v-col>
-                <v-col>
-                  <v-list-item-title
-                    v-text="vacaction.end_date"
-                  ></v-list-item-title>
-                </v-col>
-              </v-row>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
+      <br />
+      <br />
+      <strong class="ml-2">Urlaub:</strong>
+      <v-data-table
+        hide-default-footer
+        :headers="vacations_headers"
+        :items="vacations"
+      ></v-data-table>
+      <br />
+      <strong class="ml-2">Krankheit:</strong>
+      <v-data-table
+        hide-default-footer
+        :headers="vacations_headers"
+        :items="vacations"
+      ></v-data-table>
+      <br />
+      <br />
+      <strong class="ml-2 mr-5">Fahrzeuge seit XXXX:</strong>
+      {{ cars_count }}
     </v-col>
   </v-card>
 </template>
@@ -82,12 +80,31 @@ export default {
   },
   setup() {
     const transparent = ref("rgba(255, 255, 255, 0)");
+    const vacations_headers = ref([
+      { text: "Von", value: "start_date" },
+      { text: "Bis", value: "end_date" },
+      { text: "Anzahl Tage", value: "days" },
+    ]);
     const vacations = ref([
       {
         start_date: "12-05-2022",
         end_date: "14-05-2022",
+        days: 2,
       },
     ]);
+    const sickness_header = ref([
+      { text: "Von", value: "start_date" },
+      { text: "Bis", value: "end_date" },
+      { text: "Anzahl Tage", value: "days" },
+    ]);
+    const sickness = ref([
+      {
+        start_date: "12-05-2022",
+        end_date: "14-05-2022",
+        days: 2,
+      },
+    ]);
+    const cars_count = ref(42);
 
     const changeProfileImage = () => {
       alert("change");
@@ -96,7 +113,11 @@ export default {
     return {
       // return data
       transparent,
+      vacations_headers,
       vacations,
+      sickness_header,
+      sickness,
+      cars_count,
       // return function
       changeProfileImage,
     };

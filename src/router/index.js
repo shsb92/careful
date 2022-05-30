@@ -7,6 +7,7 @@ import EmployeeView from "@/views/EmployeeView.vue";
 import InvoiceIndex from "@/views/InvoiceIndex.vue";
 import InvoiceView from "@/views/InvoiceView.vue";
 import Login from "@/views/AppLogin.vue";
+import MasterData from "@/views/MasterDataView.vue";
 import NewCarView from "@/views/NewCarView.vue";
 import Profile from "@/views/ProfileView.vue";
 
@@ -83,6 +84,14 @@ const routes = [
     component: InvoiceView,
     meta: {
       view_value: 3,
+    },
+  },
+  {
+    path: "/master_data",
+    name: "master_data",
+    component: MasterData,
+    meta: {
+      view_value: 4,
     },
   },
 ];
