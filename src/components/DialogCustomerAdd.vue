@@ -18,7 +18,16 @@
         <v-toolbar-title>Auktionszentrum hinzufügen</v-toolbar-title>
       </v-toolbar>
       <v-container class="mt-10">
-        <v-text-field v-model="customer.name" label="Name" solo></v-text-field>
+        <v-text-field
+          v-model="customer.company"
+          label="Unternehmen"
+          solo
+        ></v-text-field>
+        <v-text-field
+          v-model="customer.location"
+          label="Standort"
+          solo
+        ></v-text-field>
         <v-text-field
           v-model="customer.street"
           label="Straße"
@@ -45,10 +54,11 @@
 <script>
 import { ref } from "@vue/composition-api";
 export default {
-  setup() {
+  setup(props, vm) {
     const dialog = ref(false);
     const customer = ref({
-      name: "",
+      company: "",
+      location: "",
       street: "",
       house_nr: "",
       city: "",
@@ -59,7 +69,18 @@ export default {
      *
      */
     const uploadCustomer = () => {
-      console.log(customer.value);
+      vm.root
+        .call({
+          url: "addcenter",
+          method: "post",
+          data: customer,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     return {

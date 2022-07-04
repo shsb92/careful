@@ -24,7 +24,7 @@
       <template v-slot:item="{ item }">
         <tr @click="viewCustomer(item.id)">
           <td>
-            {{ item.name }}
+            {{ item.location }}
           </td>
         </tr>
       </template></v-data-table
@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/composition-api";
+import { onMounted, ref } from "@vue/composition-api";
 export default {
   setup(props, vm) {
     const headers = ref([
@@ -43,25 +43,24 @@ export default {
         value: "name",
       },
     ]);
-    const customers = ref([
-      {
-        id: 1,
-        name: "Langen",
-        adress: "langen",
-      },
-      {
-        id: 2,
-        name: "Saarbrücken",
-        adress: "saarbrueken",
-      },
-      {
-        id: 3,
-        name: "Gießen",
-        adress: "giessen",
-      },
-    ]);
+    const customers = ref([]);
     const search = ref(null);
-
+    /**
+     *
+     */
+    const getCenters = () => {
+      vm.root
+        .call({
+          url: "indexcenters",
+          method: "get",
+        })
+        .then((response) => {
+          customers.value = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     /**
      *
      */
@@ -71,6 +70,10 @@ export default {
         params: { id: customer_id },
       });
     };
+
+    onMounted(() => {
+      getCenters();
+    });
 
     return {
       // return data

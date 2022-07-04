@@ -59,13 +59,13 @@
         <v-text-field label="Fahrgestellnummer (letzte 6)" solo></v-text-field>
       </v-col>
     </v-row>
-    <v-btn class="mt-5" block color="accent">Eintragen</v-btn>
+    <v-btn @click="addCar()" class="mt-5" block color="accent">Eintragen</v-btn>
   </div>
 </template>
 <script>
 import { ref } from "@vue/composition-api";
 export default {
-  setup() {
+  setup(props, vm) {
     const date = ref(null);
     const date_modal = ref(false);
     const selected_customer = ref(null);
@@ -82,12 +82,28 @@ export default {
       },
     ]);
 
+    const addCar = () => {
+      vm.root
+        .call({
+          url: "indexcenters",
+          method: "get",
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     return {
       // return data
       date,
       date_modal,
       selected_customer,
       customer,
+      // return methods
+      addCar,
     };
   },
 };

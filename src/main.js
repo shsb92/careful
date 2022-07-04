@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import axios from "axios";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
@@ -36,29 +37,26 @@ Vue.mixin({
      *
      * @param config all the axios config needed to execute the call
      */
-    // call: function (config) {
-    //   return new Promise((resolve, reject) => {
-    //     // if the url is any url but the login one, add the api version
-    //     if (
-    //       config.url !== "/api/locales" &&
-    //       !config.url.includes("/api/tool")
-    //     ) {
-    //       config.url = `/api/v1/${config.url}`;
-    //     }
+    call: function (config) {
+      return new Promise((resolve, reject) => {
+        // config.headers = {
+        //   Authorization: `Bearer ${Vue.$keycloak.token}`,
+        // };
 
-    //     config.headers = {
-    //       Authorization: `Bearer ${Vue.$keycloak.token}`,
-    //     };
-    //     // create call
-    //     axios(config)
-    //       .then((response) => {
-    //         resolve(response);
-    //       })
-    //       .catch((error) => {
-    //         reject(error);
-    //       });
-    //   });
-    // },
+        if (config.url !== "/api/locales") {
+          config.url = `/api/${config.url}`;
+        }
+
+        // create call
+        axios(config)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
     /**
      *
      */
