@@ -1,8 +1,21 @@
 <template>
   <div>
-    <h1>{{ customer.name }}</h1>
+    <h1>{{ customer.location }}</h1>
     <v-col class="p-0">
-      <h3>Adresse</h3>
+      <v-row>
+        <v-col>
+          <h3>Adresse</h3>
+        </v-col>
+        <v-col>
+          <delete-dialog>
+            <template v-slot:footer>
+              <v-spacer></v-spacer>
+              <v-btn @click="deleteCustomer">Löschen</v-btn>
+            </template>
+          </delete-dialog>
+        </v-col>
+      </v-row>
+
       <v-divider></v-divider>
       <v-row>
         <v-col>
@@ -74,18 +87,9 @@ export default {
   props: {
     customer_id: Number,
   },
-  setup(props) {
-    const customer = ref({
-      name: "Test Auktionszentrum",
-      street: "Beispielstraße",
-      house_nr: "14",
-      city: "Hanau",
-      postal_code: "34552",
-      submitters: [
-        { id: 1, name: "Beispieleinlieferer" },
-        { id: 2, name: "Beispieleinlieferer Zwei" },
-      ],
-    });
+  setup(props, vm) {
+    const customer = ref({});
+    const deleteDialog = ref(false);
     const expand = ref(false);
     const search = ref(null);
     const headers = ref([
@@ -98,25 +102,64 @@ export default {
     ]);
     const new_submitter = ref("");
 
+    /**
+     *
+     */
+    const getCustomer = () => {
+      vm.root
+        .call({
+          url: `centers/${vm.root._route.params.id}`,
+          method: "get",
+        })
+        .then((response) => {
+          customer.value = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    /**
+     *
+     */
     const storeSubmitter = () => {
       console.log(new_submitter.value);
       new_submitter.value = "";
       expand.value = false;
     };
 
+    /**
+     *
+     */
+    const deleteCustomer = () => {
+      vm.root
+        .call({
+          url: `centers/${vm.root._route.params.id}/delete`,
+          method: "delete",
+        })
+        .then((response) => {
+          alert(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     onMounted(() => {
-      console.log(props.customer_id);
+      getCustomer();
     });
 
     return {
       // return data
       customer,
+      deleteDialog,
       expand,
       search,
       headers,
       new_submitter,
       // return methods
       storeSubmitter,
+      deleteCustomer,
     };
   },
 };

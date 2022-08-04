@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/composition-api";
+import { onMounted, ref } from "@vue/composition-api";
 export default {
   setup(props, vm) {
     const headers = ref([
@@ -43,20 +43,7 @@ export default {
         value: "name",
       },
     ]);
-    const employees = ref([
-      {
-        id: 1,
-        name: "Max Muster",
-      },
-      {
-        id: 2,
-        name: "Mara Muster",
-      },
-      {
-        id: 3,
-        name: "Alex Muster",
-      },
-    ]);
+    const employees = ref();
     const search = ref(null);
 
     /**
@@ -68,6 +55,27 @@ export default {
         params: { id: employee_id },
       });
     };
+
+    /**
+     * Get List of all Employees
+     */
+    const getEmployees = () => {
+      vm.root
+        .call({
+          url: "users",
+          mmethod: "get",
+        })
+        .then((responsee) => {
+          employees.value = responsee.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    onMounted(() => {
+      getEmployees();
+    });
 
     return {
       // return data

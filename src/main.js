@@ -39,10 +39,11 @@ Vue.mixin({
      */
     call: function (config) {
       return new Promise((resolve, reject) => {
-        // config.headers = {
-        //   Authorization: `Bearer ${Vue.$keycloak.token}`,
-        // };
-
+        if (config.url !== "login") {
+          config.headers = {
+            Authorization: `Bearer ${this.$store.state.user.auth_token}`,
+          };
+        }
         if (config.url !== "/api/locales") {
           config.url = `/api/${config.url}`;
         }

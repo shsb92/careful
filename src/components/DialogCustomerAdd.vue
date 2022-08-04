@@ -66,17 +66,26 @@ export default {
     });
 
     /**
-     *
+     * Send Data of Auction Center to backend
      */
     const uploadCustomer = () => {
       vm.root
         .call({
-          url: "addcenter",
+          url: "centers/add",
           method: "post",
           data: customer,
         })
         .then((response) => {
           console.log(response);
+          (dialog.value = false),
+            (customer.value = {
+              company: "",
+              location: "",
+              street: "",
+              house_nr: "",
+              city: "",
+              postal_code: "",
+            });
         })
         .catch((error) => {
           console.log(error);

@@ -51,7 +51,7 @@ export default {
     const getCenters = () => {
       vm.root
         .call({
-          url: "indexcenters",
+          url: "centers",
           method: "get",
         })
         .then((response) => {
